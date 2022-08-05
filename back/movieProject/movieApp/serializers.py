@@ -1,6 +1,12 @@
 from rest_framework import serializers
-from .models import Review
+from .models import Movie
 
-class ReviewSerializer(serializers.ModelSerializer):
+class MovieSerializer(serializers.ModelSerializer):
     class Meta:
-        model = Reviewfields = ('id', 'title', 'content', 'updated_at')
+        model = Movie
+        fields = (
+            'id',
+            'title', 
+            'genre', 
+            'year', 
+        )
