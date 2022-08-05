@@ -16,13 +16,13 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from rest_framework.urlpatterns import format_suffix_patterns
-from movieApp.views import ReviewList, ReviewDetail
+from movieApp.views import MovieList, MovieDetail
 
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('review/', ReviewList.as_view()),
-    path('review/<int:pk>', ReviewDetail.as_view()),
+    path('movie/', MovieList.as_view()),
+    path('movie/<int:pk>', MovieDetail.as_view()),
 ]
 
 urlpatterns = format_suffix_patterns(urlpatterns)
