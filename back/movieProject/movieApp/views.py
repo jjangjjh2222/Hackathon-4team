@@ -7,6 +7,10 @@ from django.http import Http404
 from .serializers import MovieSerializer
 from .models import Movie
 
+
+def home(request):
+    return render(request, 'home.html')
+
 class MovieList(APIView):
     def get(self, request):
         movies = Movie.objects.all()

@@ -6,6 +6,7 @@ class Movie(models.Model):
     genre = models.CharField(max_length=15) # 장르
     year = models.IntegerField() # 제작 년도
 
-
+    def __str__(self):
+        return self.title
 
 
