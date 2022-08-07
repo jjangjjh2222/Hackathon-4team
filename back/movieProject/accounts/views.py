@@ -1,11 +1,8 @@
-from django.shortcuts import render
+from .serializers import UserSerializer
+from .models import User
+from rest_framework import generics
 
-def login(request):
-    if request.method == "POST":
-        pass
-    # request == POST
-    # 로그인 시키기
-    else :
-        return render(request, 'login.html')
-    # request == GET
-    # login html 띄우기
+# 회원가입
+class UserCreate(generics.CreateAPIView):
+    queryset = User.objects.all()
+    serializer_class = UserSerializer

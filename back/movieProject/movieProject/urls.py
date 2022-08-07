@@ -18,7 +18,7 @@ from django.urls import path, include
 from rest_framework.urlpatterns import format_suffix_patterns
 from movieApp.views import MovieList, MovieDetail
 from movieApp import views
-from accounts import views as accounts_views
+
 
 
 urlpatterns = [
@@ -26,9 +26,8 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('movie/', MovieList.as_view()),
     path('movie/<int:pk>', MovieDetail.as_view()),
-    path('login/', accounts_views.login, name='login'),
+    path('user/', include('accounts.urls')),
 
-    path('accounts/', include('allauth.urls')),
 ]
 
 urlpatterns = format_suffix_patterns(urlpatterns)
