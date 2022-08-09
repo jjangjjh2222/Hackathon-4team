@@ -1,0 +1,240 @@
+import React from "react";
+import { Link } from "react-router-dom";
+import styled from "styled-components";
+import Cake from "../assets/cake.svg";
+
+const main = "POST-EAT\nME!";
+
+const Main = () => {
+    const ClickBtn = () => {
+        const btn1 = document.getElementById("btn1");
+        const btn2 = document.getElementById("btn2");
+        btn2.style.opacity = "1";
+        btn1.style.color = "gray";
+    };
+
+    return (
+        <div style={{ overflow: "hidden", touchAction: "none" }}>
+            <MainText>{main}</MainText>
+            <br />
+            <StartBtn id="btn1" onClick={ClickBtn} style={{ color: "rgb(59, 59, 59)" }}>
+                START
+            </StartBtn>
+            <br />
+            <MemoBtn id="btn2" style={{ color: "rgb(59, 59, 59)" }}>
+                <Link
+                    to="/Login"
+                    style={{ textDecoration: "none", color: "rgb(59, 59, 59)" }}
+                >
+                    편지 보러가기!
+                </Link>
+            </MemoBtn>
+            <BtmBx>
+                <Img src={Cake} />{" "}
+            </BtmBx>
+        </div>
+    );
+};
+
+export default Main;
+
+const MainText = styled.div`
+    margin-top: 26%;
+    font-size: 58px;
+    color: #ec7698;
+    text-shadow: -2px 0 #000, 0 4px rgb(47, 47, 47), 4px 0 rgb(47, 47, 47), 0 -2px #000;
+    font-family: "Forte";
+`;
+
+const StartBtn = styled.button`
+    transition: 0.5s;
+    width: 110px;
+    height: 40px;
+    margin-top: -4%;
+    padding: 6px 20px;
+    border-width: 1.6px;
+    border-color: black;
+    border-radius: 20px;
+    background-color: #f0d596;
+    font-size: 18px;
+    font-family: "SCDream";
+`;
+const MemoBtn = styled.button`
+    width: 170px;
+    height: 40px;
+    margin-top: 4%;
+    padding: 6px 20px;
+    border-width: 1.6px;
+    border-color: black;
+    border-radius: 20px;
+    background-color: #f0d596;
+    font-size: 18px;
+    font-family: "SCDream";
+    opacity: 0;
+`;
+
+const Img = styled.img`
+    margin-top: -30%;
+    height: 210px;
+`;
+
+const BtmBx = styled.div`
+    background-color: #4f8275;
+    margin-top: 36%;
+    height: 990px;
+    border-color: black;
+    border-width: 10px;
+`;
+
+
+import React, { useEffect, useState } from "react";
+import { Routes, Route } from "react-router-dom";
+import Main from "./pages/Main.jsx";
+import Login from "./pages/Login.jsx";
+import Memo from "./pages/Memo.jsx";
+import Open from "./pages/Open.jsx";
+import "./App.css";
+import { createGlobalStyle } from "styled-components";
+import reset from "styled-reset";
+import MemoList from "./components/MemoList.jsx";
+import Modal from "./components/Modal.jsx";
+
+const App = () => {
+
+    return (
+        <>
+            <GlobalStyles />
+            {/* <Open memos ={list} /> */}
+            <Routes>
+                <Route path="/" element={<Main />}></Route>
+                <Route path="/login" element={<Login />}></Route>
+                <Route path="/memo/:id" element={<Memo />} />
+                <Route path="/open" element={<Open />} />
+            </Routes>
+        </>
+    );
+};
+
+export default App;
+
+const GlobalStyles = createGlobalStyle`
+    ${reset}
+    body {
+        white-space: pre-line;
+        text-align: center;
+        background-color: #F2E5D5;
+    }
+`;
+
+import React, {useEffect, useState} from 'react';
+import { Link } from "react-router-dom";
+import styled from "styled-components";
+import axios from "axios";
+
+const BASE_URL = 'http://15.165.62.51:8000'
+// const TEST_URL = 'http://0.0.0.0:8000'
+
+const Open = () => {
+
+  const userData = decodeURI(decodeURIComponent(window.location.href.split('open/')[1]));
+  // console.log(href.split('memo/')[1])
+  const userName = userData.split(('_'))[0]
+  const userPhone = userData.split(('_'))[1]
+
+  const [modalOpen, setModalOpen] = useState(false)
+  const modalClose = () => {
+    setModalOpen(!modalOpen)
+  }
+
+  const [memoData, setMemoData] = useState([])
+
+
+  useEffect(() => {
+    // TODO AWS베포 URL로 변경
+    axios.get(`${BASE_URL}/memo`).then(res => setMemoData(res.data.filter((memo) => memo.name === userName).map((data)=> data.Memo)))
+    console.log(userName)
+  }, []);
+
+  return (
+    <div style={{ position: "relative", height: "500px" }}>
+      { modalOpen && <Modal modalClose={modalClose} memo={memoData}></Modal>}
+      <Div1 style={{ width: "260px" }}>
+        <img src={dst1} onClick={modalClose} />
+      </Div1>
+      <Div2 style={{ width: "160px" }}>
+        <img src={dst2} onClick={modalClose}/>
+      </Div2>
+      <Div3 style={{ width: "260px" }}>
+        <img src={dst3} onClick={modalClose}/>
+      </Div3>
+      <Txt>
+        <MainTxt>{userName}님 편지 확인</MainTxt>
+        <SubTxt>( 디저트들을 눌러보세요! )</SubTxt>
+      </Txt>
+      <Div4 style={{ width: "300px" }}>
+        <img src={dst4} onClick={modalClose}/>
+      </Div4>
+      <Div5 style={{ width: "280px" }}>
+        <img src={dst5} onClick={modalClose}/>
+      </Div5>
+    </div>
+  );
+};
+
+export default Open;
+
+const Container = styled.div`
+    
+
+`
+const Div1 = styled.div`
+  position: absolute;
+  top: -50px;
+  left: -70px;
+  opacity: 0.5;
+`;
+const Div2 = styled.div`
+  position: absolute;
+  top: -10px;
+  right: 0px;
+  opacity: 0.5;
+`;
+const Div3 = styled.div`
+  position: absolute;
+  top: 100px;
+  right: 0px;
+  opacity: 0.5;
+`;
+
+const Div4 = styled.div`
+  position: absolute;
+  left: -60px;
+  bottom: 0px;
+  opacity: 0.5;
+`;
+
+const Div5 = styled.div`
+  position: absolute;
+  bottom: -120px;
+  right: -40px;
+  opacity: 0.5;
+`;
+
+const Txt = styled.div`
+  position: absolute;
+  left: 28%;
+  right: 28%;
+`;
+
+const MainTxt = styled.h1`
+  font-family: "SCDream";
+  font-size: 20px;
+  margin-top: 44vh;
+`;
+
+const SubTxt = styled.p`
+  font-family: "SCDream";
+  font-size: 12px;
+  color: #568c7d;
+  margin-top: 10px;
+`;
