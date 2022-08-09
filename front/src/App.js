@@ -10,6 +10,7 @@ import Search from "./pages/Search.jsx";
 import './App.css';
 
 function App() {
+
   return (
     <BrowserRouter>
       <GlobalStyles />

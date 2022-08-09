@@ -5,8 +5,24 @@ import { GiTheater } from "react-icons/gi";
 import { ImHome, ImSearch } from "react-icons/im";
 import ex from "../assets/example.jpg";
 import Modal from "../components/Modal2";
+import axios from 'axios';
+
+
 
 const List = () => {
+
+    // TODO useState 배열로 한번에 받을 수 있는 방법 알아보기
+    const [Mv1, getMv1] = useState([]);
+    const [Mv2, getMv2] = useState([]);
+    const [Mv3, getMv3] = useState([]);
+
+    axios
+        .get('http://127.0.0.1:8000/movie/')
+        .then(res => {
+            getMv1(res.data[0].title);
+            getMv2(res.data[1].title);
+            getMv3(res.data[2].title);
+        })
 
     const refreshPage = () => {
         window.scrollTo(0, 0);
@@ -30,13 +46,13 @@ const List = () => {
                         <Li>
                             <div>
                                 <Img src={ex}/>
-                                <H4>title</H4>
+                                <H4>{Mv1}</H4>
                             </div>
                         </Li>
                         <Li>
                             <div>
                                 <Img src={ex}/>
-                                <H4>title</H4>
+                                <H4>{Mv2}</H4>
                             </div>
                         </Li>
                     </Ul>
@@ -47,7 +63,7 @@ const List = () => {
                         <Li>
                             <div>
                                 <Img src={ex}/>
-                                <H4>title</H4>
+                                <H4>{Mv3}</H4>
                             </div>
                         </Li>
                     </Ul>
@@ -58,7 +74,7 @@ const List = () => {
                         <Li>
                             <div>
                                 <Img src={ex}/>
-                                <H4>title</H4>
+                                <H4>{Mv3}</H4>
                             </div>
                         </Li>
                     </Ul>
