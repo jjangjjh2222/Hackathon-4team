@@ -1,0 +1,19 @@
+@font-face {
+  font-family: kotra;
+  src: url('./fonts/KOTRA_BOLD.otf');
+}
+
+@font-face {
+  font-family: SansBold;
+  src: url('./fonts/SansBold.otf');
+}
+
+@font-face {
+  font-family: SansLight;
+  src: url('./fonts/SansLight.otf');
+}
+
+@font-face {
+  font-family: SansMedium;
+  src: url('./fonts/SansMedium.otf');
+}
