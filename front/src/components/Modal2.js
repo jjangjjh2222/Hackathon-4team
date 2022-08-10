@@ -99,6 +99,7 @@ const MModal = styled.div`
     margin-bottom: 70px;
     background-color: #2c3333;
     position: absolute;
+    overflow:scroll;
 `
 
 const Modal__button = styled.button`
@@ -138,7 +139,7 @@ const Input1 = styled.input`
 `
 
 const P1 = styled.p`
-    margin-top: 40%;
+    margin-top: 30%;
     color: #e7f6f2;
     text-align: left;
     padding-left: 14%;

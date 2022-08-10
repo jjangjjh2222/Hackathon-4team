@@ -50,6 +50,7 @@ const Back = styled.body`
     left: 0;
     width: 100%;
     height: 100%;
+    overflow:scroll;
 `
 
 const MainText = styled.h1`
@@ -67,6 +68,9 @@ const Div1 = styled.div`
     width: 290px;
     display: inline-block;
     margin-top: 130px;
+    display : block;
+    align-items: center;
+    margin : 10% auto;
 `
 
 const Box1 = styled.div`
@@ -106,12 +110,13 @@ const Button = styled.button`
     background-color: #D9D9D9;
     font-size: 16px;
     font-family: "SansMedium";
-    margin-top: 20%;
+    margin-top: 15%;
 `
 
 const P = styled.p`
     color: #D9D9D9;
     margin-top: 4%;
+    margin-bottom: 10%;
     font-size: 16px;
     font-family: "SansBold";
 `
