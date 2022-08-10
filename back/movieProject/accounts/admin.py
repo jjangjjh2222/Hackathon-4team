@@ -1,5 +1,13 @@
 from django.contrib import admin
-from .models import User
+from . import models
 
-admin.site.register(User)
+@admin.register(models.User)
+class UserAdmin(admin.ModelAdmin):
 
+    list_display = (
+        'nickname',
+    )
+
+    list_display_links = (
+        'nickname',
+    )
