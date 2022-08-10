@@ -1,0 +1,114 @@
+@font-face {
+    font-family: 'GmarketSansMedium';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/GmarketSansMedium.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'GmarketSansLight';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/GmarketSansLight.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    text-align: center;
+    background-color: #2c3333;
+}
+
+body {
+    background-color: #2c3333;
+}
+
+.topWrap {
+    width: 100%;
+    height: 410px;
+    padding-top: 100px;
+    background-color: #2c3333;
+    /* background-color: red; */
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    opacity: 0.9;
+}
+
+h1 {
+    color: #A5C9CA;
+    font-size: 60px;
+    font-family: "GmarketSansLight";
+}
+
+.timeBox {
+    /* background-color: yellow; */
+    height: 50%;
+    width: 80%;
+    margin: auto;
+    margin-top: 4%;
+    font-size: 50px;
+}
+
+.chatArea {
+    padding-bottom: 80px;
+    width: 100%;
+    height: 88vh;
+}
+
+.btmBox {
+
+}
+
+.div1 {
+    background-color: #D9D9D9;
+    width: 100%;
+    height: 8%;
+    position: fixed;
+    bottom: 0px;
+}
+
+.div2 {
+    position: fixed;
+    background-color: white;
+    width: 94%;
+    margin-left: 3%;
+    border-radius: 18px;
+    bottom: 1%;
+    height: 6%;
+}
+input:focus {outline:none;}
+
+.textInput {
+    width: 82%;
+    height: 100%;
+    border: none;
+    border-radius: 18px;
+    background: white;
+    color: black;
+    font-family: "GmarketSansMedium";
+    font-size: 40px;
+    padding-left: 18px;
+    float: left;
+}
+
+.btn {
+    width: 100%;
+    height: 100%;
+    font-size: 36px;
+    font-family: "GmarketSansMedium";
+    color: white;
+    border-top-right-radius: 18px;
+    border-bottom-right-radius: 18px;
+    background-color: transparent;
+}
+
+.div3 {
+    background-color: #2C3333;
+    width: 16%;
+    height: 100%;
+    border-top-right-radius: 18px;
+    border-bottom-right-radius: 18px;
+    opacity: 0.8;
+    float: right;
+}
