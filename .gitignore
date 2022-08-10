@@ -1,1 +1,4 @@
 node_modules/
+*.pyc
+db.sqlite3
+secretKey.py
