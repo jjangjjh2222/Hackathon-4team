@@ -1,8 +1,8 @@
-import React, {useEffect, useState} from 'react';
+import React, { useState } from 'react';
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 import { AiOutlineSmile, AiOutlineLock } from "react-icons/ai";
-import Modal from "../components/Modal";
+import SignModal from "../components/SignModal";
 
 const Main = () => {
 
@@ -14,7 +14,7 @@ const Main = () => {
 
     return (
         <Back>
-            { modalOpen && <Modal modalClose={modalClose} memo={joinData}></Modal>}
+            { modalOpen && <SignModal modalClose={modalClose} memo={joinData}></SignModal>}
             <MainText>HACKFLIX</MainText>
             <Div1>
                 <Box1>
