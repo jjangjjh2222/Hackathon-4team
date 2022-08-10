@@ -80,8 +80,8 @@ const Div2 = styled(Div1)`
     width: 18%;
     padding-top: 4%;
     height: 76%;
-
 `
+
 const Div3 = styled(Div1)`
     background-color: #2c3333;
     width: 10%;
