@@ -8,44 +8,10 @@ const Chat = () => {
         <>
             <TopBox>
                 <Title>이상한 변호사 우영우</Title>
-                <div>
-                    {/* 시간에 따라 점점 움직이는 바 넣기 */}
-                </div>
-
+                {/* TODO */}
+                <DivTime>시간에 따라 점점 움직이는 바 넣기</DivTime>
             </TopBox>
             <ChatArea>
-                <P>시작</P>
-                <P>dd</P>
-                <P>dd</P>
-                <P>dd</P>
-                <P>dd</P>
-                <P>dd</P>
-                <P>dd</P>
-                <P>dd</P>
-                <P>dd</P>
-                <P>dd</P>
-                <P>dd</P>
-                <P>dd</P>
-                <P>dd</P>
-                <P>dd</P>
-                <P>dd</P>
-                <P>dd</P>
-                <P>dd</P>
-                <P>dd</P>
-                <P>dd</P>
-                <P>dd</P>
-                <P>dd</P>
-                <P>dd</P>
-                <P>dd</P>
-                <P>dd</P>
-                <P>dd</P>
-                <P>dd</P>
-                <P>dd</P>
-                <P>끝</P>
-                
-
-
-
             </ChatArea>
             <BtmBox>
                 <Div1>
@@ -69,12 +35,12 @@ const TopBox = styled.div`
     height: 140px;
     padding-top: 40px;
     background-color: #2c3333;
-
     position: fixed;
     top: 0;
     left: 0;
     right: 0;
     opacity: 0.9;
+
 `
 
 const Title = styled.h1`
@@ -82,6 +48,16 @@ const Title = styled.h1`
     font-size: 28px;
     font-family: "SansMedium";
 `
+
+const DivTime = styled.div`
+    background-color: red;
+    height: 50%;
+    width: 80%;
+    margin: auto;
+    margin-top: 4%;
+
+`
+
 const ChatArea = styled.div`
     margin-top: 180px;
     padding-bottom: 80px;

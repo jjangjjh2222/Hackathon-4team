@@ -12,17 +12,49 @@ import axios from 'axios';
 const List = () => {
 
     // TODO useState 배열로 한번에 받을 수 있는 방법 알아보기
-    const [Mv1, getMv1] = useState([]);
-    const [Mv2, getMv2] = useState([]);
-    const [Mv3, getMv3] = useState([]);
 
-    axios
-        .get('http://127.0.0.1:8000/movie/')
-        .then(res => {
-            getMv1(res.data[0].title);
-            getMv2(res.data[1].title);
-            getMv3(res.data[2].title);
-        })
+    // const [Mv1, getMv1] = useState([]);
+    // const [Mv2, getMv2] = useState([]);
+    // const [Mv3, getMv3] = useState([]);
+
+    // axios
+    //     .get('http://127.0.0.1:8000/movie/')
+    //     .then(res => {
+    //         getMv1(res.data[0]);
+    //         getMv2(res.data[1]);
+    //         getMv3(res.data[2]);
+    //     })
+
+    // 참고 : https://toproot.tistory.com/52
+    axios    
+    .get('https://www.omdbapi.com/?apikey=7035c60c&s=potter')   
+    .then(res => { 
+        const h1El = document.getElementsByName('title2')
+        for (let i=0;i<3;i++){
+            h1El[i].textContent = res.data.Search[i].Title;
+        }
+        const imgEl4 = document.getElementById('img4')
+        imgEl4.src = res.data.Search[0].Poster
+        const imgEl5 = document.getElementById('img5')
+        imgEl5.src = res.data.Search[1].Poster
+        const imgEl6 = document.getElementById('img6')
+        imgEl6.src = res.data.Search[2].Poster
+    })
+
+    axios    
+    .get('https://www.omdbapi.com/?apikey=7035c60c&s=hunger') 
+    .then(res => { 
+        const h1El = document.getElementsByName('title3')
+        for (let i=0;i<3;i++){
+            h1El[i].textContent = res.data.Search[i].Title;
+        }
+        const imgEl7 = document.getElementById('img7')
+        imgEl7.src = res.data.Search[0].Poster
+        const imgEl8 = document.getElementById('img8')
+        imgEl8.src = res.data.Search[1].Poster
+        const imgEl9 = document.getElementById('img9')
+        imgEl9.src = res.data.Search[2].Poster
+    })
 
     const refreshPage = () => {
         window.scrollTo(0, 0);
@@ -42,40 +74,70 @@ const List = () => {
             <Top>
                 <Section>
                     <H3>오늘의 단체관람</H3>
-                    <Ul>
+                        <Ul>
                         <Li>
-                            <div>
-                                <Img src={ex}/>
-                                <H4>{Mv1}</H4>
-                            </div>
+                            <Piece>
+                                <Img id='img'/>
+                                <H4 name='title1'></H4>
+                            </Piece>
                         </Li>
                         <Li>
-                            <div>
-                                <Img src={ex}/>
-                                <H4>{Mv2}</H4>
-                            </div>
+                            <Piece>
+                                <Img id='img'/>
+                                <H4 name='title1'></H4>
+                            </Piece>
                         </Li>
-                    </Ul>
-                </Section>
-                <Section>
-                    <H3>여름엔 공포물!</H3>
-                    <Ul>
                         <Li>
-                            <div>
-                                <Img src={ex}/>
-                                <H4>{Mv3}</H4>
-                            </div>
+                            <Piece>
+                                <Img id='img'/>
+                                <H4 name='title1'></H4>
+                            </Piece>
                         </Li>
                     </Ul>
                 </Section>
                 <Section>
-                    <H3>한국영화 시리즈</H3>
+                    <H3>해리포터 덕후들 모여라!</H3>
                     <Ul>
                         <Li>
-                            <div>
-                                <Img src={ex}/>
-                                <H4>{Mv3}</H4>
-                            </div>
+                            <Piece>
+                                <Img id='img4'/>
+                                <H4 name='title2'></H4>
+                            </Piece>
+                        </Li>
+                        <Li>
+                            <Piece>
+                                <Img id='img5'/>
+                                <H4 name='title2'></H4>
+                            </Piece>
+                        </Li>
+                        <Li>
+                            <Piece>
+                                <Img id='img6'/>
+                                <H4 name='title2'></H4>
+                            </Piece>
+                        </Li>
+                    </Ul>
+                </Section>
+                <Section>
+                    <H3>헝거게임 몰아보기</H3>
+                    <Ul>
+                        <Li>
+                            <Piece>
+                                <Img id='img7'/>
+                                <H4 name='title3'></H4>
+                            </Piece>
+                        </Li>
+                        <Li>
+                            <Piece>
+                                <Img id='img8'/>
+                                <H4 name='title3'></H4>
+                            </Piece>
+                        </Li>
+                        <Li>
+                            <Piece>
+                                <Img id='img9'/>
+                                <H4 name='title3'></H4>
+                            </Piece>
                         </Li>
                     </Ul>
                 </Section>
@@ -113,7 +175,7 @@ const MainText = styled.h1`
 `
 
 const BtmNav = styled.nav`
-    width: 100%;
+    width: 100vw;
     height: 70px;
     margin: 10px auto;
     background-color: #2c3333;
@@ -149,11 +211,11 @@ const P = styled.p`
     color: #D9D9D9;
     font-family: "SansMedium";
     font-size: 12px;
-
 `
 
-const Section = styled.section`
-    height: 240px;
+const Section = styled.div`
+    overflow: hidden;
+    height: auto;
     padding: 0 22px;
     margin-top: 6px;
 `
@@ -164,6 +226,7 @@ const H3 = styled.h3`
     color: #d9d9d9;
     text-align: left;
     padding: 30px 0px;
+    margin-left: 10px;
 `
 
 const Img = styled.img`
@@ -172,21 +235,34 @@ const Img = styled.img`
     border-radius: 6px;
 `
 
+const Piece = styled.div`
+    display: block;
+    overflow: hidden;
+    width: 108px;
+`
+
 const H4 = styled.h4`
     font-family: 'SansMedium';
     font-size: 14px;
     margin-top: 8px;
     color: #d9d9d9;
     text-decoration: none;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+
+    
 `
 
 const Ul = styled.ul`
-
+    // overflow:auto; 
+    // white-space: nowrap;
+    // overflow-x:scroll;
 `
 
 const Li = styled.li`
     color: blue;
     display: inline-block;
     float: left;
-    margin-right: 24px;
+    margin: 12px 12px;
 `

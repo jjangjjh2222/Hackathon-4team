@@ -6,22 +6,12 @@ import { Link } from "react-router-dom";
 
 const Modal = ({modalClose}) => {
 
-  // constructor(props) {
-  //   super(props);
-  //   this.state = {
-  //     id: 'example',
-  //     password: 'example',
-  //     nickname: '예시입니다',
-  //   };
-  // }
-  
   const loginfetch = () => {
     fetch('http://127.0.0.1:8000/user/signup/', {
       method: 'POST',
       body: JSON.stringify({
-        id: this.state.id, // TODO 백엔드에서 설정한 키값 넣기
-        password: this.state.password, // TODO 백엔드에서 설정한 키값 넣기
         nickname: this.state.nickname, // TODO 백엔드에서 설정한 키값 넣기
+        password: this.state.password, // TODO 백엔드에서 설정한 키값 넣기
       }),
     })
       .then(response => response.json())
@@ -75,14 +65,6 @@ const Modal = ({modalClose}) => {
             onChange={handleInput} 
           />
         </Div2>
-        <P3>NICKNAME</P3><br />
-        <Div3>
-          <Input3 
-            type="text"
-            name="nickname"
-            onChange={handleInput}
-          />
-        </Div3>
         <Button onClick={loginfetch}>Join Now!</Button>
       </MModal>
     </Modal__container>
@@ -181,22 +163,11 @@ const Div2 = styled(Div1)`
 `
 
 const P2 = styled(P1)`
-    margin-top: 8%;
+    margin-top: 18%;
 `
 
 const Input2 = styled(Input1)`
 `
-
-const Div3 = styled(Div1)`
-`
-
-const P3 = styled(P1)`
-    margin-top: 8%;
-`
-
-const Input3 = styled(Input1)`
-`
-
 const Button = styled.button`
     width: 140px;
     height: 46px;
@@ -206,5 +177,5 @@ const Button = styled.button`
     font-size: 18px;
     color: #395B64;
     font-family: "SansBold";
-    margin-top: 16%;
+    margin-top: 26%;
 `
