@@ -87,6 +87,9 @@ const Modal__container = styled.div`
     position: fixed;
     top: 0;
     left: 0;
+    min-height: 100vh;
+    justify-content:center;
+    align-items:center;
 `
 
 const MModal = styled.div`
@@ -119,7 +122,7 @@ const Div1 = styled.div`
     border-radius: 8px;
     height: 46px;
     width: 280px;
-    display: inline-block;
+    display : inline-block;
     margin-top: 0px;
 `
 
@@ -169,5 +172,8 @@ const Button = styled.button`
     font-size: 18px;
     color: #395B64;
     font-family: "SansBold";
-    margin-top: 16%;
+    display : block;
+    align-items: center;
+    margin : 16% auto;
+    
 `
