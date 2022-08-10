@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8"/>
+    <title>Chat Room</title>
+    <link rel="stylesheet" href="room.css">
+</head>
+<body>
+    <!-- TODO roomName상수로 변경 -->
+    <div class='topWrap'>
+        <h1>이상한 변호사 우영우</h1>
+        <div class='timeBox'>시간에 따라 점점 움직이는 바 넣기</div>
+    </div>
+    <textarea class='chatArea' id="chat-log" cols="100" rows="20"></textarea><br>
+    <div class='btmBox'>
+        <div class="div1">
+            <div class="div2">
+                <input class='textInput' id="chat-message-input" type="text" size="100" style="text-align: left;">
+                <div class="div3">
+                    <input class='btn' id="chat-message-submit" type="button" value="전송">
+                    <!-- {{ room_name|json_script:"room-name" }} -->
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        const roomName = JSON.parse(document.getElementById('room-name').textContent);
+
+        const chatSocket = new WebSocket(
+            'ws://'
+            + window.location.host
+            + '/ws/chat/'
+            + roomName
+            + '/'
+        );
+
+        chatSocket.onmessage = function(e) {
+            const data = JSON.parse(e.data);
+            document.querySelector('#chat-log').value += (data.message + '\n');
+        };
+
+        chatSocket.onclose = function(e) {
+            console.error('Chat socket closed unexpectedly');
+        };
+
+        document.querySelector('#chat-message-input').focus();
+        document.querySelector('#chat-message-input').onkeyup = function(e) {
+            if (e.keyCode === 13) {  // enter, return
+                document.querySelector('#chat-message-submit').click();
+            }
+        };
+
+        document.querySelector('#chat-message-submit').onclick = function(e) {
+            const messageInputDom = document.querySelector('#chat-message-input');
+            const message = messageInputDom.value;
+            chatSocket.send(JSON.stringify({
+                'message': message
+            }));
+            messageInputDom.value = '';
+        };
+    </script>
+</body>
+</html>
