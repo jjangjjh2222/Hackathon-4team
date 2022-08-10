@@ -1,7 +1,8 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
-import { ImSearch } from "react-icons/im";
+import { ImHome, ImSearch } from "react-icons/im";
+import axios from 'axios';
 
 const Search = () => {
     
@@ -11,7 +12,9 @@ const Search = () => {
             <Div>
                 <Div1>
                 <Div2>
-                    <ImSearch size="26" color="#D9D9D9"/>
+                    <button style={{backgroundColor:"transparent", borderStyle:"none"}}>
+                        <ImSearch size="26" color="#D9D9D9"/>
+                    </button>
                 </Div2>
                     <Input></Input>
                 </Div1>
@@ -21,6 +24,20 @@ const Search = () => {
                     </Link>
                 </Div3>
             </Div>
+            <BtmNav>
+                <Divv1>
+                    <Link to="/List" style={{ textDecoration: "none", color: "#d9d9d9" }}>
+                        <ImHome size="24" color="#D9D9D9"/>
+                        <P>HOME</P>
+                    </Link>
+                </Divv1>
+                <Divv3>
+                    <Link to="/Search" style={{ textDecoration: "none"}}>
+                        <ImSearch size="24" color="#D9D9D9"/>
+                        <P>SEARCH</P>
+                    </Link>
+                </Divv3>
+            </BtmNav>
         </div>
     );
 };
@@ -71,4 +88,38 @@ const Div3 = styled(Div1)`
     float: right;
     font-family: "SansMedium";
     line-height: 50px;
+`
+
+const BtmNav = styled.nav`
+    width: 100%;
+    height: 70px;
+    margin: 10px auto;
+    background-color: #2c3333;
+    position: fixed;
+    bottom: -10px;
+    left: 0;
+    right: 0;
+    opacity: 0.9;
+`
+
+const Divv1 = styled.div`
+    float: left;
+    width:30%;
+    height: 100%;
+    padding-top: 16px;
+    padding-left: 6%;
+`
+
+const Divv3 = styled(Divv1)`
+    float: right;
+    padding-left: 0%;
+    padding-right: 6%;
+`
+
+const P = styled.p`
+    line-height: 30px;
+    color: #D9D9D9;
+    font-family: "SansMedium";
+    font-size: 12px;
+
 `

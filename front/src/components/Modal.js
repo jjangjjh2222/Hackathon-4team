@@ -1,9 +1,45 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 
-const Modal = ({modalClose, memo, num}) => {
-  console.log("Modal", memo)
+// 참고 : https://velog.io/@dev_bomdong/React-회원가입-기능-구현하기
+
+const Modal = ({modalClose}) => {
+
+  // constructor(props) {
+  //   super(props);
+  //   this.state = {
+  //     id: 'example',
+  //     password: 'example',
+  //     nickname: '예시입니다',
+  //   };
+  // }
+  
+  const loginfetch = () => {
+    fetch('http://127.0.0.1:8000/user/signup/', {
+      method: 'POST',
+      body: JSON.stringify({
+        id: this.state.id, // TODO 백엔드에서 설정한 키값 넣기
+        password: this.state.password, // TODO 백엔드에서 설정한 키값 넣기
+        nickname: this.state.nickname, // TODO 백엔드에서 설정한 키값 넣기
+      }),
+    })
+      .then(response => response.json())
+      .then(response => {
+        if (response.message === 'INVALID_USER') {
+          alert('이미 존재하는 아이디입니다.');
+        } else if (response.message === 'SUCCESS') {
+          alert('회원가입 성공!');
+          // TODO 성공 시 모달 닫히게 하기
+        }
+        console.log(response);
+      });
+  };
+
+  const handleInput = e => {
+    const { value, name } = e.target;
+    this.setState({ [name]: value });
+  };
 
   useEffect(() => { // 모달 뒷배경 스크롤 방지
     document.body.style.cssText = `
@@ -25,17 +61,29 @@ const Modal = ({modalClose, memo, num}) => {
         <br /><br /><br />
         <P1>ID</P1><br />
         <Div1>
-          <Input1></Input1>
+          <Input1
+            type="text"
+            name="id"
+            onChange={handleInput} 
+          />
         </Div1>
         <P2>PASSWORD</P2><br />
         <Div2>
-          <Input2 type="password"></Input2>
+          <Input2 
+            type="password"
+            name="password"
+            onChange={handleInput} 
+          />
         </Div2>
         <P3>NICKNAME</P3><br />
         <Div3>
-          <Input3 type="text"></Input3>
+          <Input3 
+            type="text"
+            name="nickname"
+            onChange={handleInput}
+          />
         </Div3>
-        <Button onClick={modalClose}>Join Now!</Button>
+        <Button onClick={loginfetch}>Join Now!</Button>
       </MModal>
     </Modal__container>
   )
