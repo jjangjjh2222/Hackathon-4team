@@ -26,6 +26,8 @@ class UserManager(BaseUserManager):
             **extra_fields
         )
         user.is_admin = True
+        user.is_superuser = True        
+        user.is_staff = True
         extra_fields.setdefault('is_staff', True)
         extra_fields.setdefault('is_superuser', True)
         extra_fields.setdefault('is_active', True)
@@ -43,6 +45,7 @@ class User(AbstractBaseUser, PermissionsMixin):
     # User 모델의 필수 field
     is_active = models.BooleanField(default=True)    
     is_admin = models.BooleanField(default=False)
+    is_superuser = models.BooleanField(default=False)    
     is_staff = models.BooleanField(
         _('staff status'),
         default=False,
