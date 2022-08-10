@@ -20,7 +20,6 @@ from movieApp.views import MovieList, MovieDetail
 from movieApp import views
 
 
-
 urlpatterns = [
     path('chat/', include('chat.urls')),
     path('', views.home, name="home"),
@@ -28,6 +27,7 @@ urlpatterns = [
     path('movie/', MovieList.as_view()),
     path('movie/<int:pk>', MovieDetail.as_view()),
     path('user/', include('accounts.urls')),
+    
 
 ]
 
