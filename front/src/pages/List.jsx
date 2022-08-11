@@ -17,13 +17,22 @@ const List = () => {
     // const [Mv2, getMv2] = useState([]);
     // const [Mv3, getMv3] = useState([]);
 
-    // axios
-    //     .get('http://127.0.0.1:8000/movie/')
-    //     .then(res => {
-    //         getMv1(res.data[0]);
-    //         getMv2(res.data[1]);
-    //         getMv3(res.data[2]);
-    //     })
+    axios
+        .get('http://127.0.0.1:8000/movie/')
+        .then(res => {
+            const h1El = document.getElementsByName('title1')
+            for (let i=0;i<3;i++) {
+                h1El[i].textContent = res.data[i].title;
+            }
+            const imgEl = document.getElementsByName('img')
+            for (let i=0;i<3;i++) {
+                imgEl[i].src = res.data[i].image;
+
+            }
+            // getMv1(res.data[0]);
+            // getMv2(res.data[1]);
+            // getMv3(res.data[2]);
+        })
 
     // 참고 : https://toproot.tistory.com/52
     axios    
@@ -77,19 +86,19 @@ const List = () => {
                         <Ul>
                         <Li>
                             <Piece>
-                                <Img id='img'/>
+                                <Img name='img'/>
                                 <H4 name='title1'></H4>
                             </Piece>
                         </Li>
                         <Li>
                             <Piece>
-                                <Img id='img'/>
+                                <Img name='img'/>
                                 <H4 name='title1'></H4>
                             </Piece>
                         </Li>
                         <Li>
                             <Piece>
-                                <Img id='img'/>
+                                <Img name='img'/>
                                 <H4 name='title1'></H4>
                             </Piece>
                         </Li>

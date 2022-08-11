@@ -3,8 +3,7 @@ import styled from "styled-components";
 import { Link } from "react-router-dom";
 
 const Modal2 = ({modalClose, memo, num}) => {
-  console.log("Modal", memo);
-  const time = new Date().toTimeString().split(" ")[0];
+  // console.log("Modal", memo);
 
   useEffect(() => { // 모달 뒷배경 스크롤 방지
     document.body.style.cssText = `
@@ -19,6 +18,8 @@ const Modal2 = ({modalClose, memo, num}) => {
     };
   }, []);
 
+  let date = new Date(new Date().getTime() - new Date().getTimezoneOffset() * 60000).toISOString().slice(0, -8);
+
   return (
     <Modal__container>
       <MModal>
@@ -30,7 +31,7 @@ const Modal2 = ({modalClose, memo, num}) => {
         </Div1>
         <P2>일시</P2><br />
         <Div2>
-          <Input2 type="time"></Input2>
+          <Input2 type="datetime-local" id="dateTimeLocal" min={date}></Input2>
         </Div2>
         <P3>인원 제한</P3><br />
         <Div3>
