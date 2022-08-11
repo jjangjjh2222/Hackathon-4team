@@ -8,5 +8,4 @@ class ChatSerializer(serializers.ModelSerializer):
             'id',
             'user', 
             'content',
-            'movie',
         )
