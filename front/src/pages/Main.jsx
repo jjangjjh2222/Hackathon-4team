@@ -2,19 +2,20 @@ import React, { useState } from 'react';
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 import { AiOutlineSmile, AiOutlineLock } from "react-icons/ai";
-import SignModal from "../components/SignModal";
+import  Modal from "../components/SignUpModal";
 
-const Main = () => {
+const Main = (props) => {
 
-    const [modalOpen, setModalOpen] = useState(false)
-    const modalClose = () => {
-        setModalOpen(!modalOpen)
-    }
-    const [joinData, setJoinData] = useState([])
+    // const [modalOpen, setModalOpen] = useState(false)
+    // const modalClose = () => {
+    //     setModalOpen(!modalOpen)
+    // }
+    // const [joinData, setJoinData] = useState([])
+    const [signUp, setSignUp] = useState(false);
 
     return (
-        <Back>
-            { modalOpen && <SignModal modalClose={modalClose} memo={joinData}></SignModal>}
+        <Back> 
+            {/* { modalOpen && <SignModal modalClose={modalClose} memo={joinData}></SignModal>} */}
             <MainText>HACKFLIX</MainText>
             <Div1>
                 <Box1>
@@ -34,9 +35,13 @@ const Main = () => {
                     LOG IN
                 </Link>
             </Button>
-            <div>
-                <P onClick={modalClose}>Join Now</P>
-            </div>
+            {/* <P onClick={modalClose}>Join Now</P> */}
+            <P onClick={() => setSignUp(!signUp)}>
+                Join Now
+            </P>
+            {signUp && (
+                <Modal closeModal={() => setSignUp(!signUp)}/>
+            )}
         </Back>
     );
 };
