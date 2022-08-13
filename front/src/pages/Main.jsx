@@ -13,6 +13,39 @@ const Main = (props) => {
     // const [joinData, setJoinData] = useState([])
     const [signUp, setSignUp] = useState(false);
 
+
+
+
+
+    // 로그인 백이랑 연결 (되나..?)
+    const [nickname, setNickname] = useState('');
+    const [password, setPassword] = useState('');
+
+    const handleIdInput = (e) => {
+        setNickname(e.target.value);
+    }
+    const handlePwInput = (e) => {
+        setPassword(e.target.value);
+    }
+
+    const loginfetch = () => {
+        fetch('http://localhost:8000/user/login/', { //TODO
+          method: 'POST',
+          body: JSON.stringify({
+            nickname: nickname,
+            password: password,
+          }),
+        })
+          .then(response => response.json())
+          .then(response => {
+            if (response.ValueError === 'must have user nickname') {
+              alert('닉네임을 입력해주세요.');
+            } else {
+              this.props.history.push('/List');
+            }
+          });
+      };
+
     return (
         <Back> 
             {/* { modalOpen && <SignModal modalClose={modalClose} memo={joinData}></SignModal>} */}
@@ -21,24 +54,20 @@ const Main = (props) => {
                 <Box1>
                     <AiOutlineSmile size="26" color="#D9D9D9"/>
                 </Box1>
-                <Input1></Input1>
+                <Input1 value={nickname} onChange={handleIdInput}></Input1>
             </Div1>
 
             <Div2>
                 <Box2>
                     <AiOutlineLock size="26" color="#D9D9D9"/>
                 </Box2>
-                <Input2 type="password"></Input2>
+                <Input2 type="password" value={password} onChange={handlePwInput}></Input2>
             </Div2>
-            <Button>
-                <Link to="/List" style={{ textDecoration: "none", color: "#395B64" }}>
+            <Button onClick={loginfetch()} style={{ textDecoration: "none", color: "#395B64" }}>
                     LOG IN
-                </Link>
             </Button>
             {/* <P onClick={modalClose}>Join Now</P> */}
-            <P onClick={() => setSignUp(!signUp)}>
-                Join Now
-            </P>
+            <P onClick={() => setSignUp(!signUp)}>Join Now</P>
             {signUp && (
                 <Modal closeModal={() => setSignUp(!signUp)}/>
             )}
