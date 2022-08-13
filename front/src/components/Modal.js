@@ -2,34 +2,41 @@ import React, { useEffect, useState } from 'react';
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 
-// 참고 : https://velog.io/@dev_bomdong/React-회원가입-기능-구현하기
+const Modal = ({openModal}) => {
 
-const Modal = ({modalClose}) => {
+  const [nickname, setNickname] = useState('');
+  const [password, setPassword] = useState('');
 
-  const loginfetch = () => {
+  const handleIdInput = (e) => {
+    setNickname(e.target.value);
+  }
+  const handlePwInput = (e) => {
+    setPassword(e.target.value);
+  }
+
+  const loginfetch = (e) => {
     fetch('http://127.0.0.1:8000/user/signup/', {
       method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
       body: JSON.stringify({
-        nickname: this.state.nickname, // TODO 백엔드에서 설정한 키값 넣기
-        password: this.state.password, // TODO 백엔드에서 설정한 키값 넣기
-      }),
+        nickname: nickname, // TODO 백엔드에서 설정한 키값 넣기
+        password: password, // TODO 백엔드에서 설정한 키값 넣기
+      })
     })
       .then(response => response.json())
       .then(response => {
-        if (response.message === 'INVALID_USER') {
+        if (response.nickname[0] === 'user의 nickname은/는 이미 존재합니다.') {
           alert('이미 존재하는 아이디입니다.');
-        } else if (response.message === 'SUCCESS') {
+        } else {
           alert('회원가입 성공!');
-          // TODO 성공 시 모달 닫히게 하기
-        }
-        console.log(response);
-      });
-  };
-
-  const handleInput = e => {
-    const { value, name } = e.target;
-    this.setState({ [name]: value });
-  };
+          openModal();
+      }
+      setNickname('');
+      setPassword('');
+    });
+  }
 
   useEffect(() => { // 모달 뒷배경 스크롤 방지
     document.body.style.cssText = `
@@ -47,14 +54,15 @@ const Modal = ({modalClose}) => {
   return (
     <Modal__container>
       <MModal>
-        <Modal__button onClick={modalClose}>X</Modal__button>
+        <Modal__button onClick={openModal}>X</Modal__button>
         <br /><br /><br />
         <P1>ID</P1><br />
         <Div1>
           <Input1
             type="text"
             name="id"
-            onChange={handleInput} 
+            value={nickname}
+            onChange={handleIdInput} 
           />
         </Div1>
         <P2>PASSWORD</P2><br />
@@ -62,7 +70,8 @@ const Modal = ({modalClose}) => {
           <Input2 
             type="password"
             name="password"
-            onChange={handleInput} 
+            value={password}
+            onChange={handlePwInput} 
           />
         </Div2>
         <Button onClick={loginfetch}>Join Now!</Button>

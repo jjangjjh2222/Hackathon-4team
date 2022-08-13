@@ -2,22 +2,16 @@ import React, { useState } from 'react';
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 import { AiOutlineSmile, AiOutlineLock } from "react-icons/ai";
-import  Modal from "../components/SignUpModal";
+import  Modal from "../components/Modal";
+import axios from 'axios';
 
-const Main = (props) => {
+const Main = () => {
 
-    // const [modalOpen, setModalOpen] = useState(false)
-    // const modalClose = () => {
-    //     setModalOpen(!modalOpen)
-    // }
-    // const [joinData, setJoinData] = useState([])
-    const [signUp, setSignUp] = useState(false);
+    const [showModal, setShowModal] = useState(false);
+    const openModal = () => {
+        setShowModal(!showModal);
+    }
 
-
-
-
-
-    // 로그인 백이랑 연결 (되나..?)
     const [nickname, setNickname] = useState('');
     const [password, setPassword] = useState('');
 
@@ -28,27 +22,32 @@ const Main = (props) => {
         setPassword(e.target.value);
     }
 
-    const loginfetch = () => {
-        fetch('http://localhost:8000/user/login/', { //TODO
+    const loginfetch = (e) => {
+        fetch('http://127.0.0.1:8000/user/signup/', {
           method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
           body: JSON.stringify({
-            nickname: nickname,
-            password: password,
-          }),
+            nickname: nickname, 
+            password: password, 
+          })
         })
           .then(response => response.json())
-          .then(response => {
-            if (response.ValueError === 'must have user nickname') {
-              alert('닉네임을 입력해주세요.');
-            } else {
-              this.props.history.push('/List');
+          .then(result => {
+            if (result.result) { // TODO if문 완성하기 (해당 회원정보가 있으면 props 넘겨서 List 페이지로 이동)
+                console.log("결과 : ", result);
+                this.props.history.push('/List');
+            } else if (result.message === "INVALID_USER") { // TODO 해당 회원정보가 없으면 alert 띄우기
+                console.log(result.message);
+            } else if (result.message === "KEY_ERROR") {
+                alert('일치하는 회원 정보가 없습니다.');
             }
-          });
-      };
+        });
+      }
 
     return (
         <Back> 
-            {/* { modalOpen && <SignModal modalClose={modalClose} memo={joinData}></SignModal>} */}
             <MainText>HACKFLIX</MainText>
             <Div1>
                 <Box1>
@@ -66,11 +65,9 @@ const Main = (props) => {
             <Button onClick={loginfetch()} style={{ textDecoration: "none", color: "#395B64" }}>
                     LOG IN
             </Button>
-            {/* <P onClick={modalClose}>Join Now</P> */}
-            <P onClick={() => setSignUp(!signUp)}>Join Now</P>
-            {signUp && (
-                <Modal closeModal={() => setSignUp(!signUp)}/>
-            )}
+            <P onClick={openModal}>Join Now</P>
+                {showModal && (
+                    <Modal openModal={openModal}></Modal>)}
         </Back>
     );
 };
