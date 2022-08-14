@@ -32,8 +32,9 @@ const List = () => {
     .then(res => { 
         const h1El = document.getElementsByName('title1-1');
         h1El[0].textContent = res.data.Search[0].Title;
-        const imgEl = document.getElementById('img1')
-        imgEl.src = res.data.Search[0].Poster
+        const imgEl = document.getElementById('img1');
+        imgEl.src = res.data.Search[0].Poster;
+
     })
     axios    
     .get('https://www.omdbapi.com/?apikey=7035c60c&s=hansan')   
@@ -95,27 +96,47 @@ const List = () => {
 
     const nickname = sessionStorage.getItem('nickname');
 
+    const hasRoom = (e) => {
+        fetch('http://127.0.0.1:8000/movie/')
+        .then(response => response.json())
+        .then((response) => {
+            const name = e.target.textContent;
+            const pic = e.target.src;
+
+            for (var i=0 ; i<response.length ; i++) {
+                if (response[i].title == name || response[i].image == pic) { // 클릭한 영화 관람방이 존재한다면
+                    // TODO 해당 영화 채팅방으로 이동
+                    console.log('해당 방 존재');
+                    
+                }
+            }
+            alert('아직 관람방이 없어요. 직접 만들어보세요!'); // 클릭한 영화 관람방이 아직 없다면 alert
+        })
+
+
+    }
+
     return (
         <div>
             { modalOpen && <Modal modalClose={modalClose} memo={roomData}></Modal>}
             <MainText>HACKFLIX</MainText>
             <Top>
                 <Section>
-                    <H3>{nickname}님, 오늘의 추천작품입니다</H3>
+                    <H3>{nickname}님께, 오늘의 추천작품</H3>
                         <Ul>
-                        <Li>
+                        <Li onClick={hasRoom}>
                             <Piece>
                                 <Img id='img1'/>
                                 <H4 name='title1-1'></H4>
                             </Piece>
                         </Li>
-                        <Li>
+                        <Li onClick={hasRoom}>
                             <Piece>
                                 <Img id='img2'/>
                                 <H4 name='title1-2'></H4>
                             </Piece>
                         </Li>
-                        <Li>
+                        <Li onClick={hasRoom}>
                             <Piece>
                                 <Img id='img3'/>
                                 <H4 name='title1-3'></H4>
@@ -126,19 +147,19 @@ const List = () => {
                 <Section>
                     <H3>해리포터 덕후들 모여라!</H3>
                     <Ul>
-                        <Li>
+                        <Li onClick={hasRoom}>
                             <Piece>
                                 <Img id='img4'/>
                                 <H4 name='title2'></H4>
                             </Piece>
                         </Li>
-                        <Li>
+                        <Li onClick={hasRoom}>
                             <Piece>
                                 <Img id='img5'/>
                                 <H4 name='title2'></H4>
                             </Piece>
                         </Li>
-                        <Li>
+                        <Li onClick={hasRoom}>
                             <Piece>
                                 <Img id='img6'/>
                                 <H4 name='title2'></H4>
@@ -149,19 +170,19 @@ const List = () => {
                 <Section>
                     <H3>헝거게임 몰아보기</H3>
                     <Ul>
-                        <Li>
+                        <Li onClick={hasRoom}>
                             <Piece>
                                 <Img id='img7'/>
                                 <H4 name='title3'></H4>
                             </Piece>
                         </Li>
-                        <Li>
+                        <Li onClick={hasRoom}>
                             <Piece>
                                 <Img id='img8'/>
                                 <H4 name='title3'></H4>
                             </Piece>
                         </Li>
-                        <Li>
+                        <Li onClick={hasRoom}>
                             <Piece>
                                 <Img id='img9'/>
                                 <H4 name='title3'></H4>
