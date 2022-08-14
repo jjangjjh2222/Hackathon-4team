@@ -3,38 +3,55 @@ import { Link } from "react-router-dom";
 import styled from "styled-components";
 import { GiTheater } from "react-icons/gi";
 import { ImHome, ImSearch } from "react-icons/im";
-import ex from "../assets/example.jpg";
 import Modal from "../components/Modal2";
 import axios from 'axios';
 
 
 
-const List = ({history}) => {
+const List = () => {
 
-    // TODO useState 배열로 한번에 받을 수 있는 방법 알아보기
+    // axios
+    //     .get('http://127.0.0.1:8000/movie/')
+    //     .then(res => {
+    //         const h1El = document.getElementsByName('title1')
+    //         for (let i=0;i<3;i++) {
+    //             h1El[i].textContent = res.data[i].title;
+    //         }
+    //         const imgEl = document.getElementsByName('img')
+    //         for (let i=0;i<3;i++) {
+    //             imgEl[i].src = res.data[i].image;
 
-    // const [Mv1, getMv1] = useState([]);
-    // const [Mv2, getMv2] = useState([]);
-    // const [Mv3, getMv3] = useState([]);
+    //         }
+    //         // getMv1(res.data[0]);
+    //         // getMv2(res.data[1]);
+    //         // getMv3(res.data[2]);
+    //     })
 
-    axios
-        .get('http://127.0.0.1:8000/movie/')
-        .then(res => {
-            const h1El = document.getElementsByName('title1')
-            for (let i=0;i<3;i++) {
-                h1El[i].textContent = res.data[i].title;
-            }
-            const imgEl = document.getElementsByName('img')
-            for (let i=0;i<3;i++) {
-                imgEl[i].src = res.data[i].image;
+    axios    
+    .get('https://www.omdbapi.com/?apikey=7035c60c&s=minions')   
+    .then(res => { 
+        const h1El = document.getElementsByName('title1-1');
+        h1El[0].textContent = res.data.Search[0].Title;
+        const imgEl = document.getElementById('img1')
+        imgEl.src = res.data.Search[0].Poster
+    })
+    axios    
+    .get('https://www.omdbapi.com/?apikey=7035c60c&s=hansan')   
+    .then(res => { 
+        const h1El = document.getElementsByName('title1-2');
+        h1El[0].textContent = res.data.Search[0].Title;
+        const imgEl = document.getElementById('img2');
+        imgEl.src = res.data.Search[0].Poster;
+    })
+    axios    
+    .get('https://www.omdbapi.com/?apikey=7035c60c&s=top')   
+    .then(res => { 
+        const h1El = document.getElementsByName('title1-3');
+        h1El[0].textContent = res.data.Search[1].Title;
+        const imgEl = document.getElementById('img3');
+        imgEl.src = res.data.Search[1].Poster;
+    })
 
-            }
-            // getMv1(res.data[0]);
-            // getMv2(res.data[1]);
-            // getMv3(res.data[2]);
-        })
-
-    // 참고 : https://toproot.tistory.com/52
     axios    
     .get('https://www.omdbapi.com/?apikey=7035c60c&s=potter')   
     .then(res => { 
@@ -76,30 +93,32 @@ const List = ({history}) => {
     }
     const [roomData, setRoomData] = useState([])
 
+    const nickname = sessionStorage.getItem('nickname');
+
     return (
         <div>
             { modalOpen && <Modal modalClose={modalClose} memo={roomData}></Modal>}
             <MainText>HACKFLIX</MainText>
             <Top>
                 <Section>
-                    <H3>오늘의 단체관람</H3>
+                    <H3>{nickname}님, 오늘의 추천작품입니다</H3>
                         <Ul>
                         <Li>
                             <Piece>
-                                <Img name='img'/>
-                                <H4 name='title1'></H4>
+                                <Img id='img1'/>
+                                <H4 name='title1-1'></H4>
                             </Piece>
                         </Li>
                         <Li>
                             <Piece>
-                                <Img name='img'/>
-                                <H4 name='title1'></H4>
+                                <Img id='img2'/>
+                                <H4 name='title1-2'></H4>
                             </Piece>
                         </Li>
                         <Li>
                             <Piece>
-                                <Img name='img'/>
-                                <H4 name='title1'></H4>
+                                <Img id='img3'/>
+                                <H4 name='title1-3'></H4>
                             </Piece>
                         </Li>
                     </Ul>
