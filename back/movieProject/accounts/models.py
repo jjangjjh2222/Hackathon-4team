@@ -1,6 +1,8 @@
+from operator import truediv
 from django.db import models
 from django.contrib.auth.models import AbstractBaseUser, BaseUserManager, PermissionsMixin
 from django.utils.translation import gettext_lazy as _
+import json
 
 class UserManager(BaseUserManager):
     use_in_migrations = True
@@ -63,3 +65,23 @@ class User(AbstractBaseUser, PermissionsMixin):
 
     def __str__(self):
         return self.nickname
+
+    # def authenticate(self, request, nickname=None, password=None):
+    #     login_valid = (settings.ADMIN_LOGIN == nickname)
+    #     pwd_valid = check_password(password, settings.ADMIN_PASSWORD)
+    #     if login_valid and pwd_valid:
+    #         try:
+    #             user = User.objects.get(nickname=nickname)
+    #         except User.DoesNotExist:
+    #             user = User(nickname=nickname)
+    #             user.is_staff=True
+    #             user.is_superuser = True
+    #             user.save()
+    #         return JsonResponse({'message':'SUCCESS'}, status=200)
+    #     return None
+    
+    # def get_user(self, user_id):
+    #     try:
+    #         return User.objects.get(pk=user.id)
+    #     except User.DoesNotExist:
+    #         return None

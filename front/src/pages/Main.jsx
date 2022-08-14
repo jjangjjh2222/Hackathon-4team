@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
-import { Link } from "react-router-dom";
 import styled from "styled-components";
 import { AiOutlineSmile, AiOutlineLock } from "react-icons/ai";
 import  Modal from "../components/Modal";
-import axios from 'axios';
+// import { Link } from "react-router-dom";
+// import axios from 'axios';
 
 const Main = () => {
 
@@ -23,25 +23,27 @@ const Main = () => {
     }
 
     const loginfetch = (e) => {
-        fetch('http://127.0.0.1:8000/user/signup/', {
+        // console.log("함수 시작");
+        fetch('http://localhost:8000/user/login/', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json'
           },
           body: JSON.stringify({
-            nickname: nickname, 
+            username: nickname, 
             password: password, 
           })
         })
-          .then(response => response.json())
-          .then(result => {
-            if (result.result) { // TODO if문 완성하기 (해당 회원정보가 있으면 props 넘겨서 List 페이지로 이동)
-                console.log("결과 : ", result);
-                this.props.history.push('/List');
-            } else if (result.message === "INVALID_USER") { // TODO 해당 회원정보가 없으면 alert 띄우기
-                console.log(result.message);
-            } else if (result.message === "KEY_ERROR") {
-                alert('일치하는 회원 정보가 없습니다.');
+        .then(response => response.json())
+        .then(response => {
+            if (response.key) {
+                // localStorage.setItem('login-token', response.key);
+                sessionStorage.setItem('login-token', response.key);
+                document.location.href = '/List';
+            }
+            else {
+                alert('해당하는 회원 정보가 없습니다.')
+                setPassword('');
             }
         });
       }
@@ -62,7 +64,7 @@ const Main = () => {
                 </Box2>
                 <Input2 type="password" value={password} onChange={handlePwInput}></Input2>
             </Div2>
-            <Button onClick={loginfetch()} style={{ textDecoration: "none", color: "#395B64" }}>
+            <Button onClick={loginfetch} style={{ textDecoration: "none", color: "#395B64" }}>
                     LOG IN
             </Button>
             <P onClick={openModal}>Join Now</P>

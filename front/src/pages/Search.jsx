@@ -1,10 +1,29 @@
-import React from "react";
+import React, { useState } from 'react';
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 import { ImHome, ImSearch } from "react-icons/im";
 import axios from 'axios';
 
 const Search = () => {
+
+    // componentDidMount() {
+    //     fetch('API 주소')
+    //     .then((res) => res.json())
+    //     .then((data) => {
+    //         this.setState({
+                
+
+    //         });
+    //     });
+    // }
+
+    // handleSearch = (e) => {
+    //     const inputValue = e.target.value;
+
+    //     this.setState({
+    //         userInput: inputValue,
+    //     });
+    // };
     
     return (
         <div>

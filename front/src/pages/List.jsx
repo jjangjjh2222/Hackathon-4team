@@ -9,7 +9,7 @@ import axios from 'axios';
 
 
 
-const List = () => {
+const List = ({history}) => {
 
     // TODO useState 배열로 한번에 받을 수 있는 방법 알아보기
 
