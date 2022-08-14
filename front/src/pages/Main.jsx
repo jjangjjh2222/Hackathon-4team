@@ -39,6 +39,8 @@ const Main = () => {
             if (response.key) {
                 // localStorage.setItem('login-token', response.key);
                 sessionStorage.setItem('login-token', response.key);
+                // console.log(nickname);
+                sessionStorage.setItem('nickname', nickname);
                 document.location.href = '/List';
             }
             else {
