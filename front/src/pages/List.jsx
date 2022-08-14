@@ -111,9 +111,8 @@ const List = () => {
                 }
             }
             alert('아직 관람방이 없어요. 직접 만들어보세요!'); // 클릭한 영화 관람방이 아직 없다면 alert
+            modalClose();
         })
-
-
     }
 
     return (

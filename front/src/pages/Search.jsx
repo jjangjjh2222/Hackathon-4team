@@ -5,25 +5,10 @@ import { ImHome, ImSearch } from "react-icons/im";
 import axios from 'axios';
 
 const Search = () => {
+    const handleSearch = (e) => {
+        
+    }
 
-    // componentDidMount() {
-    //     fetch('API 주소')
-    //     .then((res) => res.json())
-    //     .then((data) => {
-    //         this.setState({
-                
-
-    //         });
-    //     });
-    // }
-
-    // handleSearch = (e) => {
-    //     const inputValue = e.target.value;
-
-    //     this.setState({
-    //         userInput: inputValue,
-    //     });
-    // };
     
     return (
         <div>
@@ -35,7 +20,7 @@ const Search = () => {
                         <ImSearch size="26" color="#D9D9D9"/>
                     </button>
                 </Div2>
-                    <Input></Input>
+                    <Input onChange={handleSearch}></Input>
                 </Div1>
                 <Div3>
                     <Link to="/List" style={{ textDecoration: "none", color: "#d9d9d9" }}>
