@@ -5,8 +5,20 @@ import { ImHome, ImSearch } from "react-icons/im";
 import axios from 'axios';
 
 const Search = () => {
+    const [title, setTitle] = useState('');
+
     const handleSearch = (e) => {
-        
+        setTitle(e.target.value);
+    }
+
+    const search = (e) => {
+        fetch('http://127.0.0.1:8000/movie/')
+        .then(response => response.json())
+        .then(response => {
+            console.log("엥");
+            // const movie = response.data.title.folter
+            // modalClose();
+        })
     }
 
     
@@ -16,7 +28,7 @@ const Search = () => {
             <Div>
                 <Div1>
                 <Div2>
-                    <button style={{backgroundColor:"transparent", borderStyle:"none"}}>
+                    <button onClick={search} style={{backgroundColor:"transparent", borderStyle:"none"}}>
                         <ImSearch size="26" color="#D9D9D9"/>
                     </button>
                 </Div2>
