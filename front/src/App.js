@@ -4,7 +4,8 @@ import { createGlobalStyle } from "styled-components";
 import reset from "styled-reset";
 import Main from "./pages/Main.jsx";
 import List from "./pages/List.jsx";
-import Chat from "./pages/Chat.jsx";
+// import Chat from "./pages/Chat.jsx";
+import Chat from "./pages/Chat.js";
 import Search from "./pages/Search.jsx";
 import './App.css';
 
