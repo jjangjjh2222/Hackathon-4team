@@ -177,5 +177,5 @@ const Button = styled.button`
     display : block;
     align-items: center;
     margin : 16% auto;
-    
+    opacity: 1;
 `

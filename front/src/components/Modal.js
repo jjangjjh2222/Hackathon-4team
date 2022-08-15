@@ -21,8 +21,8 @@ const Modal = ({openModal}) => {
         'Content-Type': 'application/json'
       },
       body: JSON.stringify({
-        nickname: nickname, // TODO 백엔드에서 설정한 키값 넣기
-        password: password, // TODO 백엔드에서 설정한 키값 넣기
+        nickname: nickname, 
+        password: password, 
       })
     })
       .then(response => response.json())
@@ -36,6 +36,12 @@ const Modal = ({openModal}) => {
       setNickname('');
       setPassword('');
     });
+  }
+
+  const loginfetchOnKeyPress = (e) => {
+    if (e.key=='Enter') {
+        loginfetch();
+    }
   }
 
   useEffect(() => { // 모달 뒷배경 스크롤 방지
@@ -72,6 +78,7 @@ const Modal = ({openModal}) => {
             name="password"
             value={password}
             onChange={handlePwInput} 
+            onKeyPress={loginfetchOnKeyPress}
           />
         </Div2>
         <Button onClick={loginfetch}>Join Now!</Button>
