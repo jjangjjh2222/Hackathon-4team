@@ -34,18 +34,17 @@ const Chat = () => {
         //     const messageInputDom = document.querySelector('#chat-message-input');
         //     const message = messageInputDom.value;
         //     chatSocket.send(JSON.stringify({
-        //         'message': message
+        //         'message': message,
         //     }));
         //     messageInputDom.value = '';
         // };
-    
 
         const submitBtn = (e) => {
-            // const messageInputDom = document.querySelector('#chat-message-input');
-            const messageInputDom = document.getElementById('chat-message-input');
+            const messageInputDom = document.querySelector('#chat-message-input');
+            // const messageInputDom = document.getElementById('chat-message-input');
             const message = messageInputDom.value;
             chatSocket.send(JSON.stringify({
-                        'message': message
+                        'message': message,
                     }));
                     messageInputDom.value = '';
         }
