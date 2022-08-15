@@ -16,6 +16,12 @@ const Search = () => {
     const handleSearch = (e) => {
         setkeyword(e.target.value);
     }
+    
+    const onKeyPress = (e) => {
+        if (e.key=='Enter') {
+            search();
+        }
+    }
 
 
     const search = (e) => {
@@ -82,7 +88,7 @@ const Search = () => {
                         <ImSearch size="26" color="#D9D9D9"/>
                     </button>
                 </Div2>
-                    <Input onChange={handleSearch}></Input>
+                    <Input onChange={handleSearch} onKeyPress={onKeyPress}></Input>
                 </Div1>
                 <Div3>
                     <Link to="/List" style={{ textDecoration: "none", color: "#d9d9d9" }}>

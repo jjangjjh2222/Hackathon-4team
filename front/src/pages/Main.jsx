@@ -50,6 +50,12 @@ const Main = () => {
         });
       }
 
+      const loginfetchOnKeyPress = (e) => {
+        if (e.key=='Enter') {
+            loginfetch();
+        }
+      }
+
     return (
         <Back> 
             <MainText>HACKFLIX</MainText>
@@ -64,7 +70,7 @@ const Main = () => {
                 <Box2>
                     <AiOutlineLock size="26" color="#D9D9D9"/>
                 </Box2>
-                <Input2 type="password" value={password} onChange={handlePwInput}></Input2>
+                <Input2 type="password" value={password} onChange={handlePwInput} onKeyPress={loginfetchOnKeyPress}></Input2>
             </Div2>
             <Button onClick={loginfetch} style={{ textDecoration: "none", color: "#395B64" }}>
                     LOG IN
