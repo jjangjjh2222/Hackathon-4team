@@ -1,78 +1,126 @@
-import React, {useState, useEffect, useRef} from 'react';
-import io from 'socket.io-client';
-import '../styles/chat.css';
+import React from 'react';
+import "../styles/chat.css";
+import WebSocketInstance from '../websocket';
 
-//const socket =  io.connect('http://localhost:4000')
+class Chat extends React.Component {
 
-function Chat() {
-  const [state, setState] = useState({message:'', name:''})
-  const [chat,setChat] =useState([])
+    constructor(props) {
+        super(props)
+        this.state = {
 
-  const socketRef = useRef()
-
-  useEffect(
-    () => {
-        socketRef.current = io.connect("http://localhost:4000")
-        socketRef.current.on("message", ({ name, message }) => {
-            setChat([ ...chat, { name, message } ])
+        }
+        this.waitForSocketConnection(() => {
+            WebSocketInstance.addCallbacks(
+                this.setMessages.bind(this), 
+                this.addMessage.bind(this))
+            WebSocketInstance.fetchMessages(this.props.currentUser);
         })
-        return () => socketRef.current.disconnect()
-    },
-    [ chat ]
-  )
+    }
 
-  const onTextChange = e =>{
-    setState({...state,[e.target.name]: e.target.value})
-  }
+    waitForSocketConnection(callback) {
+        const component = this;
+        setTimeout(
+            function () {
+                if(WebSocketInstance.state() === 1) {
+                    console.log('connection is secure');
+                    callback();
+                    return;
+                } else {
+                    console.log('waiting for connection...');
+                    component.waitForSocketConnection(callback);
+                }
+            }, 100);
+    }
 
-  const onMessageSubmit = (e) => {
-    const { name, message } = state
-    socketRef.current.emit("message", { name, message })
-    e.preventDefault()
-    setState({ message: "", name })
-  }
+    addMessage(message) {
+        this.setState({ 
+            messages: [...this.state.messages, message]
+        });
+    }
 
+    setMessages(messages) {
+        this.setState({messages: messages.reverse()});
+    }
 
-  const renderChat =()=>{
-    return chat.map(({name, message},index)=>(
-      <div className="div-message" key={index}>
-        <h3 className="message">
-            {name}  <span className="massage_contents">{message}</span>
-        </h3>
-      </div>
-    ))
-  }
+    renderMessages = (messages) => {
+        const currentUser = 'admin';
+        return messages.map(massage => (
+            <li key={massage.id} className={message.author === currentUser ? 'sent' : 'replies'}>
+                <p>{message.content}</p>
+            </li>
+        ));
+    }
 
-  return (
-    <div class="chat">
-        <form class="chat-components" onSubmit={onMessageSubmit}>
-            {/*방제목 받아오기*/}
-            <h1 className="title">Title</h1>
-            <div className="name_field">
-                {/* <label for="nickname">NICKNAME</label> */}
-                <input 
-                    name ="name" 
-                    onChange={e=> onTextChange(e)} 
-                    value={state.name}
-                    label="Name"
-                    placeholder="NickName"
-                />
+    sendMessageHandler = e => {
+        e.preventDefault();
+        const messageObject = {
+            from: 'admin',
+            content: this.stage.message
+        }
+        WebSocketInstance.newChatMessage(messageObject);
+        this.setState({
+            message:''
+        });
+    }
+    messageChangeHandler = event => {
+        this.setState({messages: event.target.value})
+    }
+
+    render(){
+        const messages = this.state.messages;
+        return (
+            <div className="frame">
+                <div className='topWrap'>
+                    <h1 id="title"></h1>
+                    <div className="user-container">
+                        <label htmlFor="nickname">NICKNAME</label>
+                        <input type="text" id="nickname" spellCheck="false" />
+                    </div>
+                    <div className='timeBox'>TODO 시간에 따라 움직이는 바 넣기</div>
+                </div>
+                {/* <textarea className='chatArea' id="chat-log" cols="100" rows="20"> */}
+                <div className="display-container" id="chat-log" cols="100" rows="20">
+                    <ul className="chatting-list">
+                            {/* <li className="sent">
+                                <div className="user">윤이</div>
+                                <p className="message">반갑쇼</span>
+                            </li>
+                            <li className="received">
+                                <div className="user">우니</div>
+                                <p className="message">안녕하쇼</span>
+                            </li> */}
+                            {
+                                messages && 
+                                this.renderMessages(messages)
+                            }
+                    </ul>
+                </div>
+                {/* </textarea><br>
+                    <input id="chat-message-input" type="text" size="100"><br>
+                    <input id="chat-message-submit" type="button" value="Send"> */}
+                <div className='btmBox'>
+                    <form onSubmit={this.sendMessageHandler}>
+                        <div className="div1">
+                            <div className="div2">
+                                <input 
+                                    onChange={this.messageChangeHandler}
+                                    value={this.stage.message}
+                                    className='textInput' 
+                                    id="chat-message-input" 
+                                    type="text" 
+                                    size="100" />
+                                <div className="div3">
+                                    <input className='send-button' id="chat-message-submit" type="button" value="전송" />
+                                    {/* {{ room_name|json_script:"room-name" }} */}
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
             </div>
-            <div className="render-chat">
-                {renderChat()}
-            </div>
-            <div className="btm_box">
-                <input 
-                    name ="message" 
-                    onChange={e=> onTextChange(e)} 
-                    value={state.message}
-                    label="Message"
-                />
-                <button>전송</button>
-            </div>
-        </form>
-    </div>
-  );
-}
+        )
+    }
+};
 
 export default Chat;
+

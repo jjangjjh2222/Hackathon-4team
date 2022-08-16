@@ -8,20 +8,27 @@ import List from "./pages/List.jsx";
 import Chat from "./pages/Chat.js";
 import Search from "./pages/Search.jsx";
 import './App.css';
+import WebSocketInstance from "./websocket";
 
-function App() {
+class App extends React.Component {
 
-  return (
-    <BrowserRouter>
-      <GlobalStyles />
-      <Routes>
-        <Route path="/" element={<Main />}></Route>
-        <Route path="/List" element={<List />}></Route>
-        <Route path="/Search" element={<Search />}></Route>
-        <Route path="/Chat" element={<Chat />}></Route>
-      </Routes>
-    </BrowserRouter>
-  );
+  componentDidMount() {
+    WebSocketInstance.connect();
+  }
+
+  render() {
+    return(
+      <BrowserRouter>
+        <GlobalStyles />
+        <Routes>
+          <Route path="/" element={<Main />}></Route>
+          <Route path="/List" element={<List />}></Route>
+          <Route path="/Search" element={<Search />}></Route>
+          <Route path="/Chat" element={<Chat />}></Route>
+        </Routes>
+      </BrowserRouter>
+    )
+  }
 }
 
 export default App;
