@@ -34,7 +34,6 @@ function App() {
           </Route> */}
           <Route
             path="/chat"
-            exact
             render={() => <Chat 
               // nickname={nickname} 
               // roomName={roomName} 

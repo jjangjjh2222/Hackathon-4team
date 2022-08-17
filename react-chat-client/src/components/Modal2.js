@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import styled from "styled-components";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
+import axios from 'axios';
 
 const Modal2 = ({modalClose, memo, num}) => {
 
@@ -35,7 +36,21 @@ const Modal2 = ({modalClose, memo, num}) => {
   
   // localStorage.setItem("nickname", nickname);
   localStorage.setItem("roomName", roomName);
-  console.log("roomName: ", roomName);
+
+  // const Room = () => {
+  //   const params = useParams();
+
+  //   useEffect(() => {
+  //     axios
+  //     .get(`http://localhost:3000/chat/${roomName}`)
+  //     .then((res) => {
+  //       console.log(res.data);
+  //     })
+  //   })
+  // }
+
+
+
 
   return (
     <Modal__container>
@@ -72,7 +87,7 @@ const Modal2 = ({modalClose, memo, num}) => {
             <option>10명</option>
           </select>
         </Div3>
-        <Button><Link to="/chat">MAKE A ROOM!</Link></Button>
+        <Button><Link to={`/chat/${roomName}`}>MAKE A ROOM!</Link></Button>
       </MModal>
     </Modal__container>
   )
@@ -195,4 +210,6 @@ const Button = styled.button`
     align-items: center;
     margin : 16% auto;
     opacity: 1;
+    text-decoration: none;
+    font-style: none;
 `

@@ -92,7 +92,7 @@ const Search = () => {
                 </Div1>
                 <Div3>
                     <Link to="/List" style={{ textDecoration: "none", color: "#d9d9d9" }}>
-                        <p>취소</p>
+                        <p style = {{fontSize:'12px'}}>취소</p>
                     </Link>
                 </Div3>
             </Div>

@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import styled from "styled-components";
+import { useLocation } from 'react-router-dom';
 
 const ChatLog = ({ socket }) => {
   const [msgList, setMsgList] = useState([]);
@@ -7,7 +8,7 @@ const ChatLog = ({ socket }) => {
   const nickname = sessionStorage.getItem('nickname');
   const roomName = sessionStorage.getItem('roomName');
 
-  console.log(roomName);
+  // console.log(params());
 
   useEffect(() => {
     // messsgeItem : {msg: String, name: String, timeStamp: String}
@@ -26,10 +27,15 @@ const ChatLog = ({ socket }) => {
     };
   }, [socket]);
 
+  var location = useLocation().pathname;
+  var title = location.split('/');
+  title = title[2];
+  console.log(title);
+
   return (
     <div>
       <Ul>
-      {/* <Title>{roomName}</Title> */}
+      <Title>{title}</Title>
       {msgList.map((msg, idx) => (
         <Box key={idx}>
           <br /><br />
@@ -50,6 +56,10 @@ const ChatLog = ({ socket }) => {
 export default ChatLog;
 
 const Title = styled.div`  
+  font-family: "SansLight";
+  font-size: 30px;
+  color: #d9d9d9;
+  margin-top: 10%;
 
 `
 
