@@ -1,0 +1,240 @@
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
+
+@font-face {
+    font-family: 'GmarketSansMedium';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/GmarketSansMedium.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'GmarketSansLight';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/GmarketSansLight.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+.frame {
+    margin: 0;
+    padding: 0;
+    text-align: center;
+    background-color: #2c3333;
+}
+
+body {background-color: #2c3333;}
+
+.topWrap {
+    width: 100%;
+    height: 410px;
+    padding-top: 100px;
+    background-color: #2c3333;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    opacity: 0.9;
+}
+
+h1 {
+    color: #A5C9CA;
+    font-size: 60px;
+    font-family: "GmarketSansLight";
+}
+.timeBox {
+    height: 50%;
+    width: 80%;
+    margin: auto;
+    margin-top: 4%;
+    font-size: 50px;
+}
+
+.chatArea {
+    padding-top: 560px;
+    width: 100%;
+    height: 62vh;
+    scrollbar-width: none;
+    font-family: 'GmarketSansLight';
+    font-size: 26px;
+    line-height: 50px;
+    border: none;
+
+    /* background-color: red; */
+}
+.div1 {
+    background-color: #D9D9D9;
+    width: 100%;
+    height: 8%;
+    position: fixed;
+    bottom: 0px;
+}
+
+.div2 {
+    position: fixed;
+    background-color: white;
+    width: 94%;
+    margin-left: 3%;
+    border-radius: 18px;
+    bottom: 1%;
+    height: 6%;
+}
+input:focus {outline:none;}
+
+.textInput {
+    width: 82%;
+    height: 100%;
+    border: none;
+    border-radius: 18px;
+    background: white;
+    color: black;
+    font-family: "GmarketSansMedium";
+    font-size: 40px;
+    padding-left: 18px;
+    float: left;
+}
+
+.send-button {
+    width: 100%;
+    height: 100%;
+    font-size: 36px;
+    font-family: "GmarketSansMedium";
+    color: white;
+    border-top-right-radius: 18px;
+    border-bottom-right-radius: 18px;
+    background-color: transparent;
+}
+
+.div3 {
+    background-color: #2C3333;
+    width: 16%;
+    height: 100%;
+    border-top-right-radius: 18px;
+    border-bottom-right-radius: 18px;
+    opacity: 0.8;
+    float: right;
+}
+
+.display-container {
+    padding-top: 560px;
+    width: 100%;
+    height: 62vh;
+    scrollbar-width: none;
+    font-family: 'GmarketSansLight';
+    font-size: 26px;
+    line-height: 50px;
+    border: none;
+
+    flex: 12;
+    overflow-y: scroll;
+}
+.chatting-list {
+    list-style: none;
+}
+.chatting-list li {
+    width: 90%;
+    padding: 0.3rem;
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-end;
+    margin-top: 2rem;
+    /* background-color: green; */
+}
+.user {
+    /* background-color: red; */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 0.2rem;
+    font-size: 30px;
+    color: white;
+    margin-left: 30px;
+    margin-right: 30px;
+}
+.message {
+    /* width: auto;
+    flex: 7;*/
+    margin: 30 10px;
+    border-radius: 8px;
+    padding: 1rem;
+    font-size: 40px;
+    background-color: red;
+}
+.sent {
+    flex-direction: row-reverse;
+    float: right;
+}
+.received {
+    flex-direction: row;
+    float: left;
+}
+.sent .message {
+    background: #A5C9CA;
+    text-align: right;
+    padding-right: 50px;
+    padding-left: 50px;
+}
+.received .message {
+    background: #D9D9D9;
+    text-align: left;
+    padding-left: 50px;
+    padding-right: 50px;
+}
+
+.user-container {
+    /* flex: 1; */
+    /* display: flex; */
+    margin: auto;
+    /* float: center; */
+    /* justify-content: flex-start; */
+    padding: 2rem;
+    align-items: center;
+    height: 10%;
+}
+.user-container label {
+    font-size: 30px;
+    font-family: 'GmarketSansLight';
+    color: white;
+    margin-right: 2rem;
+}
+.user-container input {
+    border-radius: 8px;
+    font-family: 'GmarketSansLight';
+    text-indent: 5px;
+    border: none;
+    height: 150%;
+    width: 30%;
+    background-color: #A5C9CA;
+    font-size: 26px;
+}
+@font-face {
+  font-family: kotra;
+  src: url('/KOTRA_BOLD.9f5907ec.otf');
+}
+
+@font-face {
+  font-family: SansBold;
+  src: url('/SansBold.4588282e.otf');
+}
+
+@font-face {
+  font-family: SansLight;
+  src: url('/SansLight.baa695e9.otf');
+}
+
+@font-face {
+  font-family: SansMedium;
+  src: url('/SansMedium.2dfe624c.otf');
+}
+
+/*# sourceMappingURL=/src.a2b27638.css.map */

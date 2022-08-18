@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="root"></div>
+    <script src="./src/index.js">
+        // const roomName = JSON.parse(document.getElementById('room-name').textContent);
+
+        // const ttl = document.getElementById('title');
+        // ttl.innerHTML=roomName;
+
+        // const chatSocket = new WebSocket(
+        //     'ws://'
+        //     + window.location.host
+        //     + '/ws/chat/'
+        //     + roomName
+        //     + '/'
+        // );
+
+        // chatSocket.onmessage = function(e) {
+        //     const data = JSON.parse(e.data);
+
+        //     const sent = document.getElementsByClassName('sent');
+        //     const received = document.getElementsByClassName('received');
+        //     const chatList = document.querySelector(".chatting-list");
+        //     const li = document.createElement("li");
+
+        //     // TODO 유저의 닉네임 데이터를 받아와 본인의 메세지면(this.name==="sent") li.classList.add("received")으로 오른쪽에 뜨도록 구현
+            
+        //     // li.classList.add(nickname.value === this.name ? "sent" : "received");
+        //     li.classList.add("received");
+            
+        //     console.log(data)
+
+        //     const dom = 
+        //         `<div class="user">${nickname.value}</div>
+        //         <p class="message">${data.message}</p>`;
+        //     li.innerHTML = dom;
+        //     chatList.appendChild(li);
+
+        //     // 스크롤 자동 하단으로 이동
+        //     document.getElementById("chat-log").scrollTop = document.getElementById("chat-log").scrollHeight;
+        // };
+
+        // chatSocket.onclose = function(e) {
+        //     console.error('Chat socket closed unexpectedly');
+        // };
+
+        // document.querySelector('#chat-message-input').focus();
+
+        // document.querySelector('#chat-message-input').onkeypress = function(e) {
+        //     if (e.keyCode === 13) {  // enter, return
+        //         // document.querySelector('#chat-message-submit').click();
+        //         const messageInputDom = document.querySelector('#chat-message-input');
+        //         const message = messageInputDom.value;
+        //         chatSocket.send(JSON.stringify({
+        //             'message': message
+        //         }));
+        //         messageInputDom.value = '';
+        //         // 스크롤 자동 하단으로 이동
+        //         document.getElementById("chat-log").scrollTop = document.getElementById("chat-log").scrollHeight;
+        //     }
+        // };
+
+        // document.querySelector('#chat-message-submit').onclick = function(e) {
+        //     const messageInputDom = document.querySelector('#chat-message-input');
+        //     const message = messageInputDom.value;
+        //     chatSocket.send(JSON.stringify({
+        //         'message': message
+        //     }));
+        //     messageInputDom.value = '';
+        //     // 스크롤 자동 하단으로 이동
+        //     document.getElementById("chat-log").scrollTop = document.getElementById("chat-log").scrollHeight;
+        // };
+    </script>
+</body>
+</html>
