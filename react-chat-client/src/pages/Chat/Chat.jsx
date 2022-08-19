@@ -17,7 +17,7 @@ const Chat = () => {
   const [currentSocket, setCurrentSocket] = useState();
 
   useEffect(() => {
-    setCurrentSocket(socketIOClient("localhost:5000"));
+    setCurrentSocket(socketIOClient("hackkflix.herokuapp.com"));
   }, []);
 
   if (currentSocket) {
