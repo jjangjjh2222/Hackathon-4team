@@ -3,7 +3,20 @@
 실시간 채팅을 이용한 동시 영화 시청 플랫폼 (수정)
 
 
+<br>
 
+
+### Backend
+- 리액트와 장고(DRF) 연동 : serializer, APIView로 CRUD 구현
+- 커스텀 유저 구현 (회원가입, 로그인) : Django RESTful API
+- 채팅 앱 구현 : Django channels
+
+공식 문서 참조 : https://channels.readthedocs.io/en/latest/tutorial/part_1.html
+
+
+<br>
+
+### Frontend
 
 <br>
 
@@ -34,5 +47,5 @@
 <br>
 
 ## 💻 배포
-멋쟁이 사자처럼에서 제공한 클라우드 타입 활용
+멋쟁이 사자처럼에서 제공한 클라우드 타입 활용하여 배포
 - https://cloudtype.io/
