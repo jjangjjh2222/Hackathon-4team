@@ -1,5 +1,5 @@
 const express = require("express");
-const http = require("http");
+const https = require("https");
 const socketIO = require("socket.io");
 const cors = require("cors");
 const { timeLog } = require("console");
@@ -13,7 +13,7 @@ app.get("*", (req, res) => {
   res.sendFile(path.join(__dirname, "../client/build/index.html"))
 })
 
-const server = http.createServer(app);
+const server = https.createServer(app);
 // socketio 생성후 서버 인스턴스 사용
 const io = socketIO(server, {
   cors: {
