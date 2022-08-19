@@ -4,11 +4,11 @@ import ChatInput from "../../components/ChatInput/ChatInput";
 import ChatLog from "../../components/ChatLog/ChatLog";
 import Loading from "./Loading";
 
-import { io } from "socket.io-client";
+// import { io } from "socket.io-client";
 
-const socket = io("https://hackkflix.herokuapp.com/", {
-  withCredentials: true,
-});
+// const socket = io("https://hackkflix.herokuapp.com/", {
+//   withCredentials: true,
+// });
 
 const Chat = () => {
   const nickname = sessionStorage.getItem('nickname');
@@ -21,7 +21,7 @@ const Chat = () => {
   const [currentSocket, setCurrentSocket] = useState();
 
   useEffect(() => {
-    setCurrentSocket(socketIOClient("hackkflix.herokuapp.com/5000"));
+    setCurrentSocket(socketIOClient("localhost:5000"));
   }, []);
 
   if (currentSocket) {
