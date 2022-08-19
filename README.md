@@ -25,7 +25,7 @@
 
 <br>
 
-## 💻 기술 스택
+## 🛠 기술 스택
 - 백엔드 프레임워크 : Python Django
 - 프론트엔드 : react, css, node.js
 - 데이터베이스 : Djnago sqlite3
@@ -33,6 +33,6 @@
 
 <br>
 
-## 배포
+## 💻 배포
 멋쟁이 사자처럼에서 제공한 클라우드 타입 활용
 - https://cloudtype.io/
