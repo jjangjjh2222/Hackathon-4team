@@ -13,7 +13,7 @@ import './App.css';
 function App() {
   // const [nickname, setNickname] = useState('');
   // const [roomName, setRoomName] = useState('');
-
+  
   return (
     <div className="App">
       <GlobalStyles />

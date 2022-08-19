@@ -6,6 +6,10 @@ import Loading from "./Loading";
 
 //const socket = socketIOClient("localhost:5000");
 
+var socket = io.connect(`hackkflix.herokuapp.com/5000`,{
+  cors: { origin: '*' }
+});
+
 const Chat = () => {
   const nickname = sessionStorage.getItem('nickname');
   const roomName = sessionStorage.getItem('roomName');
