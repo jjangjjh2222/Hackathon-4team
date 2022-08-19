@@ -131,6 +131,9 @@ const Input1 = styled.input`border-radius: 8px;
     background: transparent;
     color: #D9D9D9;
     font-family: "SansMedium";
+    &: focus {
+        outline: none;
+    }
 `
 
 const Div2 = styled(Div1)`
