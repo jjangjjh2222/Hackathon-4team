@@ -6,7 +6,7 @@
 <br>
 
 
-### Backend
+> ### Backend
 
 - 리액트와 장고(DRF) 연동 : serializer, APIView로 CRUD 구현
 - 커스텀 유저 구현 (회원가입, 로그인) : Django RESTful API
@@ -14,12 +14,12 @@
 
 공식 문서 참조 : https://channels.readthedocs.io/en/latest/tutorial/part_1.html
 
+<br>
+
+> ### Frontend
 
 
 <br>
-
-### Frontend
-
 <br>
 
 ## 🙋 팀 소개
@@ -39,6 +39,7 @@
 | 프론트엔드 개발자 | 박미현 |
 
 <br>
+<br>
 
 ## 🛠 기술 스택
 - 백엔드 프레임워크 : Python Django
@@ -46,6 +47,7 @@
 - 데이터베이스 : Djnago sqlite3
 - 협업 : github
 
+<br>
 <br>
 
 ## 💻 배포
