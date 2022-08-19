@@ -18,6 +18,10 @@
 
 > ### Frontend
 
+ - axios를 활용한 api연동
+ - socket.io를 이용한 채팅앱 구현
+ - UI 구현
+ - 영화 데이터 오픈소스를 활용해 Listup페이지 구현
 
 <br>
 <br>
