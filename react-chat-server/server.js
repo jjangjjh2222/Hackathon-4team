@@ -17,7 +17,7 @@ const server = http.createServer(app);
 // socketio 생성후 서버 인스턴스 사용
 const io = socketIO(server, {
   cors: {
-    origin: "https://erica-hack-4.netlify.app",
+    origin: "https://erica-hack-4.netlify.app/chat",
     methods: ["GET", "POST"],
     allowedHeaders: [],
     credentials: true,
