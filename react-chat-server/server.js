@@ -13,12 +13,6 @@ app.get("*", (req, res) => {
   res.sendFile(path.join(__dirname, "../client/build/index.html"))
 })
 
-// var socket = io("https://erica-hack-4.netlify.app", {
-//   extraHeaders: {
-//     Access-Control-Allow-Origin: "hackkflix.herokuapp.com/5000",
-//   }
-// });
-
 const server = http.createServer(app);
 // socketio 생성후 서버 인스턴스 사용
 const io = socketIO(server, {
