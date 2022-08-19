@@ -87,7 +87,7 @@ const Modal2 = ({modalClose, memo, num}) => {
             <option>10명</option>
           </select>
         </Div3>
-        <Button><Link to={`/chat/${roomName}`}>MAKE A ROOM!</Link></Button>
+        <Button><StyledLink to={`/chat/${roomName}`}>MAKE A ROOM!</StyledLink></Button>
       </MModal>
     </Modal__container>
   )
@@ -169,6 +169,9 @@ const Input1 = styled.input`
     color: #2c3333;
     font-family: "SansMedium";
     padding-left: 12px;
+    &: focus {
+      outline: none;
+   }
 `
 
 const P1 = styled.p`
@@ -212,4 +215,10 @@ const Button = styled.button`
     opacity: 1;
     text-decoration: none;
     font-style: none;
+    
+`
+
+const StyledLink = styled(Link)`
+   text-decoration: none;
+   color: black;
 `

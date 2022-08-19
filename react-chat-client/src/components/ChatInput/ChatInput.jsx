@@ -60,6 +60,9 @@ const Input = styled.input`
   font-size: 20px;
   padding-left: 18px;
   float: left;
+  &: focus {
+    outline: none;
+ }
 `
 
 const Form = styled.form`
