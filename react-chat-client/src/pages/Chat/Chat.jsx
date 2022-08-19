@@ -4,6 +4,12 @@ import ChatInput from "../../components/ChatInput/ChatInput";
 import ChatLog from "../../components/ChatLog/ChatLog";
 import Loading from "./Loading";
 
+import { io } from "socket.io-client";
+
+const socket = io("https://hackkflix.herokuapp.com/", {
+  withCredentials: true,
+});
+
 const Chat = () => {
   const nickname = sessionStorage.getItem('nickname');
   const roomName = sessionStorage.getItem('roomName');
