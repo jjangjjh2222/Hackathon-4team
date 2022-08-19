@@ -1,0 +1,48 @@
+.ChatInput-container {
+  position: absolute;
+  bottom: 0rem;
+  width: 100%;
+}
+
+.ChatInput-form {
+  display: flex;
+}
+
+.ChatInput-form input {
+  flex: 1;
+  height: 2rem;
+}
+
+.Home-container {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.Join-button {
+  margin-top: 1rem;
+}
+
+@font-face {
+  font-family: kotra;
+  src: url('/KOTRA_BOLD.9f5907ec.otf');
+}
+
+@font-face {
+  font-family: SansBold;
+  src: url('/SansBold.4588282e.otf');
+}
+
+@font-face {
+  font-family: SansLight;
+  src: url('/SansLight.baa695e9.otf');
+}
+
+@font-face {
+  font-family: SansMedium;
+  src: url('/SansMedium.2dfe624c.otf');
+}
+
+/*# sourceMappingURL=/src.a2b27638.css.map */
