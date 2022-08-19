@@ -23,6 +23,8 @@
  - UI 구현
  - 영화 데이터 오픈소스를 활용해 Listup 페이지 구현
 
+> ### 디자인
+- 피그마 주소 : https://www.figma.com/file/jGt5ms7aB4niYuZBwoU6lP/Untitled?node-id=0%3A1
 <br>
 <br>
 
