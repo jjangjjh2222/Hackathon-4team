@@ -7,11 +7,13 @@
 
 
 ### Backend
+
 - 리액트와 장고(DRF) 연동 : serializer, APIView로 CRUD 구현
 - 커스텀 유저 구현 (회원가입, 로그인) : Django RESTful API
 - 채팅 앱 구현 : Django channels
 
 공식 문서 참조 : https://channels.readthedocs.io/en/latest/tutorial/part_1.html
+
 
 
 <br>
