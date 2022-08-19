@@ -19,7 +19,7 @@ const io = socketIO(server, {
   cors: {
     origin: "*",
     methods: ["GET", "POST"],
-    allowedHeaders: ["*"],
+    allowedHeaders: ["https://erica-hack-4.netlify.app"],
     credentials: true,
   },
 });
