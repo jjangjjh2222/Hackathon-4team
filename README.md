@@ -3,6 +3,9 @@
 - 서비스명 : Hackflix
 - 한 줄 소개 : 실시간 채팅을 이용한 동시 영화 시청 플랫폼
 
+![image](https://user-images.githubusercontent.com/88773219/187879850-b9f26272-31ef-4a7c-a88f-cee4f99d49cd.png)
+
+
 
 <br>
 
